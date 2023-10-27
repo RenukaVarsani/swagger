@@ -1,0 +1,97 @@
+swagger: "2.0"
+info:
+  title: DEMO API  
+  description: this my demo api
+  version : 1.0
+  contact : 
+    email: riaavarsani31@gmail.com
+  liscence: 
+    name: Apache 2.0  
+    url: "http://apache.org/"
+  servers: 
+    -url: "http://localhost:4000/"
+    description: "this is my local server"  
+schemes: [http,https]     
+
+
+  # return string
+paths:    
+  /string: 
+    get:
+      summary: Returns s string
+      description: It returning a fake string
+      responses:
+        200:
+          description: Success
+          Schema: 
+            type: string
+            example: "a fake string"
+        500:  
+          description: Error
+
+# return object
+  
+  /user: 
+    get:
+      summary: Returns s string
+      description: It returning a fake string
+      responses:
+        200:
+          description: Success
+          Schema: 
+            type: string
+            example: "a fake string"
+        500:  
+          description: Error
+
+  /users: 
+    get:
+      summary: Returns array
+      description: It returning a fake array
+      responses:
+        200:
+          description: Success
+          Schema: 
+            type: array
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+        500:  
+          description: Error
+
+
+  /users/{userId}: 
+    get:
+      summary: Get a user by ID
+      parameters:
+       - in: path
+         name: userId
+         required: true
+         description: ID of the user
+         schema: 
+            type: integer
+      responses:
+        200:
+          description: Success  
+          
+  /create: 
+    post:
+      summary: Posting Data
+      produces:
+        -application/json
+      consume:
+        -application/json
+      parameters:
+       - in: body      
+         schema: 
+            type: object
+            properties:
+             id: 
+              type: integer
+             name: 
+              type: string  
+      responses:
+        200:
+          description: OK          
